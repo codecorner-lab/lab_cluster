@@ -10,12 +10,15 @@ module "eks" {
   cluster_addons = {
     coredns = {
       most_recent = true
+      resolve_conflicts_on_create = "OVERWRITE"
     }
     kube-proxy = {
       most_recent = true
+      resolve_conflicts_on_create = "OVERWRITE"
     }
     vpc-cni = {
       most_recent = true
+      resolve_conflicts_on_create = "OVERWRITE"
     }
   }
 
@@ -30,7 +33,7 @@ module "eks" {
       max_size     = 10
       desired_size = 1
 
-      instance_types = ["t3.large"]
+      instance_types = ["t2.small"]
       capacity_type  = "SPOT"
     }
   }
